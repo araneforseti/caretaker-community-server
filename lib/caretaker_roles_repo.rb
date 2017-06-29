@@ -1,5 +1,3 @@
-require './lib/permissions.rb'
-
 class CaretakerRolesRepo
   def get_all
     [

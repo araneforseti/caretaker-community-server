@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/namespace'
 require 'json'
 
+require './lib/announcements_repo.rb'
 require './lib/users_repo.rb'
 require './lib/events_repo.rb'
 require './lib/caretaker_roles_repo.rb'
@@ -33,5 +34,10 @@ namespace '/api/v1' do
   get '/caretaker_roles' do
     caretakerRoles = CaretakerRolesRepo.new
     caretakerRoles.get_all.to_json
+  end
+
+  get '/announcements' do
+    announcements = AnnouncementsRepo.new
+    announcements.get_all.to_json
   end
 end
