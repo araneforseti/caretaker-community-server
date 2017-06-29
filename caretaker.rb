@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/namespace'
 require 'json'
 
+require './lib/users_repo.rb'
+
 set :show_exceptions, :after_handler
 
 namespace '/api/v1' do
@@ -17,7 +19,7 @@ namespace '/api/v1' do
   end
 
   get '/users' do
-    response = {"Words": "Here"}
-    response.to_json
+    users = UsersRepo.new
+    users.get_all.to_json
   end
 end
